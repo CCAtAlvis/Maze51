@@ -56,4 +56,14 @@ sysinfo.txt
 *.unitypackage
 
 # Crashlytics generated file
-crashlytics-build.properties
+crashlytics-build.properties4
+
+*.fbx
+*.3ds
+*.blend
+*.obj
+*.mp3
+*.ogg
+*.wav
+*.otf
+*.ttf
