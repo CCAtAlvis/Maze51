@@ -6,7 +6,8 @@ using System.Linq; // For the Enumeration function
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StringEncoder : MonoBehaviour {
+public class StringEncoder : MonoBehaviour
+{
 
     private static System.Random random = new System.Random();
     public Text strEncoded, strDecoded;
@@ -44,7 +45,7 @@ public class StringEncoder : MonoBehaviour {
     bool any2Same(string str)
     {
         return (str.Count(x => x == 'A') == 2 || str.Count(x => x == 'B') == 2 || str.Count(x => x == 'C') == 2 || str.Count(x => x == 'D') == 2);
-  
+
     }
 
     bool LexicographicallySorted(string str)
@@ -65,15 +66,15 @@ public class StringEncoder : MonoBehaviour {
         {
             curr = condition.allSame;
         }
-        else if(any3Same(encoded))
+        else if (any3Same(encoded))
         {
             curr = condition.any3Same;
         }
-        else if(any2Same(encoded))
+        else if (any2Same(encoded))
         {
             curr = condition.any2Same;
         }
-        else if(LexicographicallySorted(encoded))
+        else if (LexicographicallySorted(encoded))
         {
             curr = condition.LexicographicallySorted;
         }
@@ -149,10 +150,11 @@ public class StringEncoder : MonoBehaviour {
                 return true;
         }
     }
-    
-    
-	// Use this for initialization
-	void Start () {
+
+
+    // Use this for initialization
+    void Start()
+    {
         encoded = RandomString();
         decoded = RandomString();
         strEncoded.text = encoded;
@@ -160,13 +162,14 @@ public class StringEncoder : MonoBehaviour {
         curr = currCondition();
         //if (LexicographicallySorted("ABCD"))
         //    Debug.Log("Yes");
-	}
+    }
 
     int currRow = 0;
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
 
-		if(Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             if (checkResult())
             {
@@ -197,6 +200,6 @@ public class StringEncoder : MonoBehaviour {
         {
             currRow = ++currRow % 4;
         }
-	}
+    }
 }
 
