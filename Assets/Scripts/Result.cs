@@ -8,7 +8,7 @@ public class Result : MonoBehaviour {
     public static void Success()
     {
         Debug.Log("Success");
-        GameObject.Find("Canvas").GetComponent<ButtonManipulatorScript>().number.text = "SUCCESS";
+        //GameObject.Find("Canvas").GetComponent<ButtonManipulatorScript>().number.text = "SUCCESS";
     }
 
     public static void Fail()
