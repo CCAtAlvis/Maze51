@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WallSetter : MonoBehaviour
 {
+    public GameObject leftTop, leftBottom, rightTop, rightBottom;
     private GameObject[] holeFiller = new GameObject[4];
     public List<GameObject> bricksList = new List<GameObject>();
     private List<int> done = new List<int>();
@@ -38,19 +39,19 @@ public class WallSetter : MonoBehaviour
             done.Add(index);
             if (j == 0)
             {
-                holeFiller[0].transform.position = new Vector3(0, 0.5f, 0);
+                holeFiller[0].transform.position = leftTop.transform.position;
             }
             else if (j == 1)
             {
-                holeFiller[1].transform.position = new Vector3(1, 0.5f, 0);
+                holeFiller[1].transform.position = rightTop.transform.position;
             }
             else if (j == 2)
             {
-                holeFiller[2].transform.position = new Vector3(0, 0, 0);
+                holeFiller[2].transform.position = leftBottom.transform.position;
             }
             else if (j == 3)
             {
-                holeFiller[3].transform.position = new Vector3(1, 0f, 0);
+                holeFiller[3].transform.position = rightBottom.transform.position;
                 checkSolution();
             }
             ++j;
