@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Result : MonoBehaviour {
+public class Result : MonoBehaviour
+{
 
 
     public static void Success()
     {
         Debug.Log("Success");
-        
+
     }
 
     public static void Fail()
@@ -16,13 +17,15 @@ public class Result : MonoBehaviour {
         Debug.Log("Fail");
 
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

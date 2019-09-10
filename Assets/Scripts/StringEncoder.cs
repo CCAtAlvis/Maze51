@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System; // For the random class
-using System.Text; // For the stringbuilder class
-using System.Linq; // For the Enumeration function
+﻿using System.Text;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StringEncoder : MonoBehaviour
 {
+    public GameObject trig;
 
     private static System.Random random = new System.Random();
     public Text strEncoded, strDecoded;
@@ -130,7 +128,7 @@ public class StringEncoder : MonoBehaviour
             && decoded[2] == encoded[0] && decoded[3] == encoded[1];
     }
 
-    bool checkResult()
+    bool CheckResult()
     {
         switch (curr)
         {
@@ -152,7 +150,6 @@ public class StringEncoder : MonoBehaviour
     }
 
 
-    // Use this for initialization
     void Start()
     {
         encoded = RandomString();
@@ -171,15 +168,15 @@ public class StringEncoder : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (checkResult())
+            if (CheckResult())
             {
                 // Success
-                Result.Success();
+                trig.GetComponent<PuzzleController>().PuzzleSolved();
             }
             else
             {
                 // Fail
-                Result.Fail();
+                trig.GetComponent<PuzzleController>().PuzzleFailed();
             }
         }
         else if (Input.GetKeyDown(KeyCode.A)) // To cycle current character

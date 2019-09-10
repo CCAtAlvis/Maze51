@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManipulatorScript : MonoBehaviour
 {
-
-    Color blue = new Color(44f/255, 130f / 255, 201f / 255, 1);
+    public GameObject trig;
+    Color blue = new Color(44f / 255, 130f / 255, 201f / 255, 1);
     Color yellow = new Color(254f / 255, 241f / 255, 96f / 255, 1);
     Color red = new Color(219f / 255, 10f / 255, 91f / 255, 1);
     Color green = new Color(46f / 255, 204f / 255, 113f / 255, 1);
@@ -30,7 +28,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     string itos(int value)
     {
         string num = value.ToString();
-        if (value<10)
+        if (value < 10)
             num = "0" + num;
         return num;
     }
@@ -44,8 +42,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     {
         return listOfSquares.Contains(value);
     }
-
-    // Use this for initialization
+    
     void Start()
     {
         value = Random.Range(0, 100);
@@ -70,8 +67,17 @@ public class ButtonManipulatorScript : MonoBehaviour
                 break;
         }
     }
+    
+    void Pass()
+    {
+        trig.GetComponent<PuzzleController>().PuzzleSolved();
+    }
 
-    // Update is called once per frame
+    void Fail()
+    {
+        trig.GetComponent<PuzzleController>().PuzzleFailed();
+    }
+
     void Update()
     {
 
@@ -100,12 +106,12 @@ public class ButtonManipulatorScript : MonoBehaviour
                 if ((value & 1) == 1)
                 {
                     // Success
-                    Result.Success();
+                    Pass();
                 }
                 else
                 {
                     // Wrong
-                    Result.Fail();
+                    Fail();
                 }
             }
             if (currentCondition == conditions.even)
@@ -113,12 +119,12 @@ public class ButtonManipulatorScript : MonoBehaviour
                 if ((value & 1) == 0)
                 {
                     // Success
-                    Result.Success();
+                    Pass();
                 }
                 else
                 {
                     // Wrong
-                    Result.Fail();
+                    Fail();
                 }
             }
             if (currentCondition == conditions.prime)
@@ -126,12 +132,12 @@ public class ButtonManipulatorScript : MonoBehaviour
                 if (isPrime(value))
                 {
                     // Success
-                    Result.Success();
+                    Pass();
                 }
                 else
                 {
                     // Wrong
-                    Result.Fail();
+                   Fail();
                 }
             }
             if (currentCondition == conditions.perfectSquare)
@@ -139,12 +145,12 @@ public class ButtonManipulatorScript : MonoBehaviour
                 if (isPerfectSquare(value))
                 {
                     // Success
-                    Result.Success();
+                    Pass();
                 }
                 else
                 {
                     // Wrong
-                    Result.Fail();
+                    Fail();
                 }
             }
             if (currentCondition == conditions.divisibleBy3)
@@ -152,12 +158,12 @@ public class ButtonManipulatorScript : MonoBehaviour
                 if (value % 3 == 0)
                 {
                     // Success
-                    Result.Success();
+                    Pass();
                 }
                 else
                 {
                     // Wrong
-                    Result.Fail();
+                    Fail();
                 }
             }
         }
