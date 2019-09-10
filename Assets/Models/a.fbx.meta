@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 172d2e2a5e6a0ff4e8f79e3cb6df5e61
-timeCreated: 1567876538
+guid: 793311ee72fe09e44a3f44e5dc54ed3d
+timeCreated: 1568104207
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -11,12 +11,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube.003
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: 590c23f981cbfbb419fc7a9d394932ec, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -68,7 +63,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
