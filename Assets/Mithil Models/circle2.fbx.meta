@@ -28,6 +28,9 @@ ModelImporter:
     4300000: Curve.004
     4300002: Curve.003
     4300004: Curve.001
+    6400000: Curve.001
+    6400002: Curve.003
+    6400004: Curve.004
     10800000: Lamp
   externalObjects: {}
   materials:
@@ -61,7 +64,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
