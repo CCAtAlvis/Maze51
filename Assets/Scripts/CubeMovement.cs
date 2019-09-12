@@ -8,7 +8,11 @@ public class CubeMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * 3.5f * Time.deltaTime);
+            transform.Translate(Vector3.forward * 4.5f * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(-Vector3.forward * 4.5f * Time.deltaTime);
         }
     }
 }

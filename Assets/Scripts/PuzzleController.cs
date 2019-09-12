@@ -9,7 +9,7 @@ public class PuzzleController : MonoBehaviour
     public Transform puzzleSpawnTransform;
 
     public GameObject puzzleTrigger;
-
+    public ButtonManipulatorScript scriptObject;
     public GameObject cvObject;
 
     public bool doesRequireCanvas;
@@ -17,6 +17,7 @@ public class PuzzleController : MonoBehaviour
     public void PuzzleSolved()
     {
         puzzleTrigger.GetComponent<Renderer>().material.color = Color.green;
+        puzzleTrigger.GetComponent<BoxCollider>().enabled = false;
         Player.transform.position = successTransform.transform.position;
 
         if (doesRequireCanvas)
@@ -31,7 +32,7 @@ public class PuzzleController : MonoBehaviour
 
         if (doesRequireCanvas)
             cvObject.SetActive(false);
-
+        scriptObject.init() ;
         Player.GetComponent<CubeMovement>().enabled = true;
     }
 

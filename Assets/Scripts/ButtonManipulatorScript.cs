@@ -42,8 +42,8 @@ public class ButtonManipulatorScript : MonoBehaviour
     {
         return listOfSquares.Contains(value);
     }
-    
-    void Start()
+
+    public void init()
     {
         value = Random.Range(0, 100);
         number.text = itos(value);
@@ -66,6 +66,11 @@ public class ButtonManipulatorScript : MonoBehaviour
                 number.color = purple;
                 break;
         }
+    }
+
+    void Start()
+    {
+        init();
     }
     
     void Pass()
