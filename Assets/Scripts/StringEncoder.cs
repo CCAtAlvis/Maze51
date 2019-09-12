@@ -9,7 +9,7 @@ public class StringEncoder : MonoBehaviour
 
     private static System.Random random = new System.Random();
     public Text strEncoded, strDecoded;
-    public string encoded, decoded;
+    private string encoded, decoded;
 
     condition curr;
 
@@ -149,20 +149,22 @@ public class StringEncoder : MonoBehaviour
         }
     }
 
-
-    void Start()
+    public void init()
     {
         encoded = RandomString();
         decoded = RandomString();
         strEncoded.text = encoded;
         strDecoded.text = decoded;
         curr = currCondition();
-        //if (LexicographicallySorted("ABCD"))
-        //    Debug.Log("Yes");
+    }
+
+    void Start()
+    {
+        init();
     }
 
     int currRow = 0;
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -176,7 +178,7 @@ public class StringEncoder : MonoBehaviour
             else
             {
                 // Fail
-                trig.GetComponent<PuzzleController>().PuzzleFailed();
+                trig.GetComponent<PuzzleController>().PuzzleFailed(2);
             }
         }
         else if (Input.GetKeyDown(KeyCode.A)) // To cycle current character

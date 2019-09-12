@@ -9,7 +9,8 @@ public class PuzzleController : MonoBehaviour
     public Transform puzzleSpawnTransform;
 
     public GameObject puzzleTrigger;
-    public ButtonManipulatorScript scriptObject;
+    public ButtonManipulatorScript P1ScriptObject;
+    public StringEncoder P2ScriptObject;
     public GameObject cvObject;
 
     public bool doesRequireCanvas;
@@ -26,13 +27,16 @@ public class PuzzleController : MonoBehaviour
         Player.GetComponent<CubeMovement>().enabled = true;
     }
 
-    public void PuzzleFailed()
+    public void PuzzleFailed(int x)
     {
         Player.transform.position = failureTransform.transform.position;
 
         if (doesRequireCanvas)
             cvObject.SetActive(false);
-        scriptObject.init() ;
+        if(x==1)
+        P1ScriptObject.init() ;
+        if(x==2)
+        P2ScriptObject.init();
         Player.GetComponent<CubeMovement>().enabled = true;
     }
 

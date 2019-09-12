@@ -80,7 +80,7 @@ public class ButtonManipulatorScript : MonoBehaviour
 
     void Fail()
     {
-        trig.GetComponent<PuzzleController>().PuzzleFailed();
+        trig.GetComponent<PuzzleController>().PuzzleFailed(1);
     }
 
     void Update()
