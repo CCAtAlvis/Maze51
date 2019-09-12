@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TriggerScript : MonoBehaviour
 {
@@ -13,6 +11,7 @@ public class TriggerScript : MonoBehaviour
         {
             player = other.gameObject;
             Debug.Log("Entered");
+            if(PC.doesRequireCanvas)
             PC.cvObject.SetActive(true);
             player.transform.position = PC.puzzleSpawnTransform.transform.position;
             player.gameObject.GetComponent<CubeMovement>().enabled = false;

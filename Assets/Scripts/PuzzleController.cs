@@ -12,6 +12,7 @@ public class PuzzleController : MonoBehaviour
     public ButtonManipulatorScript P1ScriptObject;
     public StringEncoder P2ScriptObject;
     public ColorMixer P3ScriptObject;
+    public WallSetter P4ScriptObject;
 
     public GameObject cvObject;
 
@@ -27,9 +28,17 @@ public class PuzzleController : MonoBehaviour
             cvObject.SetActive(false);
 
         Player.GetComponent<CubeMovement>().enabled = true;
-        if(x==2)
+        if (x == 2)
         {
             P3ScriptObject.enabled = true;
+        }
+        if (x == 3)
+        {
+            P4ScriptObject.enabled = true;
+        }
+        if (x == 4)
+        {
+
         }
     }
 
@@ -50,12 +59,11 @@ public class PuzzleController : MonoBehaviour
         if (x == 3)
         {
             P3ScriptObject.init();
-            //P3ScriptObject.enabled = true;
+        }
+        if (x == 4)
+        {
+            P4ScriptObject.init();
         }
         Player.GetComponent<CubeMovement>().enabled = true;
-    }
-    void Start()
-    {
-
     }
 }

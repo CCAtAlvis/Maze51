@@ -72,7 +72,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     {
         init();
     }
-    
+
     void Pass()
     {
         trig.GetComponent<PuzzleController>().PuzzleSolved(1);
@@ -142,7 +142,7 @@ public class ButtonManipulatorScript : MonoBehaviour
                 else
                 {
                     // Wrong
-                   Fail();
+                    Fail();
                 }
             }
             if (currentCondition == conditions.perfectSquare)

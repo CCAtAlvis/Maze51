@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WallBreaker : MonoBehaviour {
     //1 se right, 0.5 se upar
