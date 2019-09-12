@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ColorMixer : MonoBehaviour
 {
-
+    public GameObject trig;
     Dictionary<string, Color> quotes =
     new Dictionary<string, Color>();
 
@@ -19,8 +19,7 @@ public class ColorMixer : MonoBehaviour
     string[] quoteStrings = new string[12];
 
     public Text textui;
-    // Use this for initialization
-    void Start()
+    public void init()
     {
         coloredSpheres[0].GetComponent<Renderer>().material.color = yellow;
         coloredSpheres[1].GetComponent<Renderer>().material.color = Color.red;
@@ -56,6 +55,10 @@ public class ColorMixer : MonoBehaviour
 
         textui.text = str;
     }
+    void Start()
+    {
+        init();
+    }
 
     Color AddColor()
     {
@@ -85,17 +88,13 @@ public class ColorMixer : MonoBehaviour
         {
             // Submit
             if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
-                Debug.Log("Success");
+                trig.GetComponent<PuzzleController>().PuzzleSolved(3);
             else
             {
-                currSphere = 0;
-                gameObject.GetComponent<Renderer>().material.color = Color.white;
+                //currSphere = 0;
+                //gameObject.GetComponent<Renderer>().material.color = Color.white;
+                trig.GetComponent<PuzzleController>().PuzzleFailed(3);
             }
         }
-    }
-
-    bool checker()
-    {
-        return false;
     }
 }

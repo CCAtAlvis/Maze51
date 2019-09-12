@@ -173,7 +173,7 @@ public class StringEncoder : MonoBehaviour
             if (CheckResult())
             {
                 // Success
-                trig.GetComponent<PuzzleController>().PuzzleSolved();
+                trig.GetComponent<PuzzleController>().PuzzleSolved(2);
             }
             else
             {

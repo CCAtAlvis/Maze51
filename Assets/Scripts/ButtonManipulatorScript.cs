@@ -75,7 +75,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     
     void Pass()
     {
-        trig.GetComponent<PuzzleController>().PuzzleSolved();
+        trig.GetComponent<PuzzleController>().PuzzleSolved(1);
     }
 
     void Fail()
