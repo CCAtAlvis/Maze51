@@ -67,3 +67,5 @@ crashlytics-build.properties4
 *.wav
 *.otf
 *.ttf
+/Assets/Scripts/x.py
+/Assets/Scripts/x.py.meta
