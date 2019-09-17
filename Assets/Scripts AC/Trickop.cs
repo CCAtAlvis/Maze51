@@ -7,6 +7,8 @@ public class Trickop : MonoBehaviour
 
     public GameObject num1, num2, operationobj, ansobj;
 
+    public GameObject trig;
+
     public static int a, b, co, ans;
 
     public static string[] op;
@@ -143,10 +145,14 @@ public class Trickop : MonoBehaviour
         ansobj.GetComponent<TextMesh>().text = ans.ToString();
 
         if (ansobj.GetComponent<TextMesh>().color == ansc[ac, bc])
+        {
             Debug.Log("Success");
+            trig.GetComponent<PuzzleController>().PuzzleSolved(6);
+        }
         else
         {
             Debug.Log("Failure");
+            trig.GetComponent<PuzzleController>().PuzzleFailed(6);
         }
 
 
