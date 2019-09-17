@@ -1,21 +1,16 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 2927a39b3a79a174ba4a73b57d23e68f
-timeCreated: 1568719423
-=======
-guid: 58d74435dafc11f48960edcd13d170a2
-timeCreated: 1568654458
->>>>>>> 7e1e4b7fcbd1d362029fd02cfa35396a2e9c6947
+guid: 398b0bc0d012c114282a8f87c7e15a34
+timeCreated: 1568104206
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material.001
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Curve.001
+    4300000: Cube.010
   externalObjects: {}
   materials:
     importMaterials: 1

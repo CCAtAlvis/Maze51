@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Movement.unity
     guid: f3965b2d11afe1643a1b3ccb1a84a790
+  - enabled: 1
+    path: Assets/Scenes/VR movement.unity
+    guid: 9e073b70d718436499aec198159c5f09
