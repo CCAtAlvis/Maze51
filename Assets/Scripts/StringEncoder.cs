@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class StringEncoder : MonoBehaviour
 {
     public GameObject trig;
+    public PuzzleContro2 Player;
+    public RayCastClick rayer;
 
     private static System.Random random = new System.Random();
     public Text strEncoded, strDecoded;
     private string encoded, decoded;
 
-    condition curr;
+    Condition curr;
 
-    enum condition
+    enum Condition
     {
         allSame, // All same characters e.g aaaa
         any3Same, // e.g aaba or aaab
@@ -30,17 +32,17 @@ public class StringEncoder : MonoBehaviour
         return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
     }
 
-    bool allSame(string str)
+    bool AllSame(string str)
     {
         return str.Distinct().Count() == 1;
     }
 
-    bool any3Same(string str)
+    bool Any3Same(string str)
     {
         return (str.Count(x => x == 'A') == 3 || str.Count(x => x == 'B') == 3 || str.Count(x => x == 'C') == 3 || str.Count(x => x == 'D') == 3);
     }
 
-    bool any2Same(string str)
+    bool Any2Same(string str)
     {
         return (str.Count(x => x == 'A') == 2 || str.Count(x => x == 'B') == 2 || str.Count(x => x == 'C') == 2 || str.Count(x => x == 'D') == 2);
 
@@ -57,59 +59,59 @@ public class StringEncoder : MonoBehaviour
         return str == "DCBA";
     }
 
-    condition currCondition()
+    Condition CurrCondition()
     {
-        condition curr;
-        if (allSame(encoded))
+        Condition curr;
+        if (AllSame(encoded))
         {
-            curr = condition.allSame;
+            curr = Condition.allSame;
         }
-        else if (any3Same(encoded))
+        else if (Any3Same(encoded))
         {
-            curr = condition.any3Same;
+            curr = Condition.any3Same;
         }
-        else if (any2Same(encoded))
+        else if (Any2Same(encoded))
         {
-            curr = condition.any2Same;
+            curr = Condition.any2Same;
         }
         else if (LexicographicallySorted(encoded))
         {
-            curr = condition.LexicographicallySorted;
+            curr = Condition.LexicographicallySorted;
         }
         else if (ReverseSorted(encoded))
         {
-            curr = condition.ReverseSorted;
+            curr = Condition.ReverseSorted;
         }
         else
         {
-            curr = condition.allDifferent;
+            curr = Condition.allDifferent;
         }
         return curr;
     }
 
-    bool allSameResult()
+    bool AllSameResult()
     {
-        return (encoded[0] == 'A' && decoded[0] == 'B' && allSame(decoded)) ||
-            (encoded[0] == 'B' && decoded[0] == 'C' && allSame(decoded)) ||
-            (encoded[0] == 'C' && decoded[0] == 'D' && allSame(decoded)) ||
-            (encoded[0] == 'D' && decoded[0] == 'A' && allSame(decoded))
+        return (encoded[0] == 'A' && decoded[0] == 'B' && AllSame(decoded)) ||
+            (encoded[0] == 'B' && decoded[0] == 'C' && AllSame(decoded)) ||
+            (encoded[0] == 'C' && decoded[0] == 'D' && AllSame(decoded)) ||
+            (encoded[0] == 'D' && decoded[0] == 'A' && AllSame(decoded))
             ;
     }
 
-    bool any3SameResult()
+    bool Any3SameResult()
     {
-        return (encoded.Count(x => x == 'A') == 1 && decoded[0] == 'A' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'B') == 1 && decoded[0] == 'B' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'C') == 1 && decoded[0] == 'C' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'D') == 1 && decoded[0] == 'D' && allSame(decoded));
+        return (encoded.Count(x => x == 'A') == 1 && decoded[0] == 'A' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'B') == 1 && decoded[0] == 'B' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'C') == 1 && decoded[0] == 'C' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'D') == 1 && decoded[0] == 'D' && AllSame(decoded));
     }
 
-    bool any2SameResult()
+    bool Any2SameResult()
     {
-        return (encoded.Count(x => x == 'A') == 0 && decoded[0] == 'A' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'B') == 0 && decoded[0] == 'B' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'C') == 0 && decoded[0] == 'C' && allSame(decoded)) ||
-            (encoded.Count(x => x == 'D') == 0 && decoded[0] == 'D' && allSame(decoded));
+        return (encoded.Count(x => x == 'A') == 0 && decoded[0] == 'A' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'B') == 0 && decoded[0] == 'B' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'C') == 0 && decoded[0] == 'C' && AllSame(decoded)) ||
+            (encoded.Count(x => x == 'D') == 0 && decoded[0] == 'D' && AllSame(decoded));
     }
 
     bool LexicallySortedResult()
@@ -122,7 +124,7 @@ public class StringEncoder : MonoBehaviour
         return true; // You got lucky, 1 in 256
     }
 
-    bool allDifferentResult()
+    bool AllDifferentResult()
     {
         return decoded[0] == encoded[2] && decoded[1] == encoded[3]
             && decoded[2] == encoded[0] && decoded[3] == encoded[1];
@@ -132,35 +134,35 @@ public class StringEncoder : MonoBehaviour
     {
         switch (curr)
         {
-            case condition.allSame:
-                return allSameResult();
-            case condition.any3Same:
-                return any3SameResult();
-            case condition.any2Same:
-                return any2SameResult();
-            case condition.LexicographicallySorted:
+            case Condition.allSame:
+                return AllSameResult();
+            case Condition.any3Same:
+                return Any3SameResult();
+            case Condition.any2Same:
+                return Any2SameResult();
+            case Condition.LexicographicallySorted:
                 return LexicallySortedResult();
-            case condition.ReverseSorted:
+            case Condition.ReverseSorted:
                 return ReverseSortedResult();
-            case condition.allDifferent:
-                return allDifferentResult();
+            case Condition.allDifferent:
+                return AllDifferentResult();
             default:
                 return true;
         }
     }
 
-    public void init()
+    public void Init()
     {
         encoded = RandomString();
         decoded = RandomString();
         strEncoded.text = encoded;
         strDecoded.text = decoded;
-        curr = currCondition();
+        curr = CurrCondition();
     }
 
     void Start()
     {
-        init();
+        Init();
     }
 
     int currRow = 0;
@@ -173,12 +175,12 @@ public class StringEncoder : MonoBehaviour
             if (CheckResult())
             {
                 // Success
-                trig.GetComponent<PuzzleController>().PuzzleSolved(2);
+                Player.PuzzleSolved(1);
             }
             else
             {
                 // Fail
-                trig.GetComponent<PuzzleController>().PuzzleFailed(2);
+                Player.PuzzleFailed(1);
             }
         }
         else if (Input.GetKeyDown(KeyCode.A)) // To cycle current character

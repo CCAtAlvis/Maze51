@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ButtonManipulatorScript : MonoBehaviour
 {
     public GameObject trig;
+    public PuzzleContro2 Player;
     public RayCastClick rayer;
     Color blue = new Color(44f / 255, 130f / 255, 201f / 255, 1);
     Color yellow = new Color(254f / 255, 241f / 255, 96f / 255, 1);
@@ -26,7 +27,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     }
     conditions currentCondition;
     /// Integer to string ///
-    string itos(int value)
+    string IntegerToString(int value)
     {
         string num = value.ToString();
         if (value < 10)
@@ -34,20 +35,20 @@ public class ButtonManipulatorScript : MonoBehaviour
         return num;
     }
 
-    bool isPrime(int value)
+    bool IsPrime(int value)
     {
         return (listOfPrimes.Contains(value));
     }
 
-    bool isPerfectSquare(int value)
+    bool IsPerfectSquare(int value)
     {
         return listOfSquares.Contains(value);
     }
 
-    public void init()
+    public void Init()
     {
         value = Random.Range(0, 100);
-        number.text = itos(value);
+        number.text = IntegerToString(value);
         currentCondition = (conditions)Random.Range(0, 5);
         switch (currentCondition)
         {
@@ -71,24 +72,23 @@ public class ButtonManipulatorScript : MonoBehaviour
 
     void Start()
     {
-        init();
+        Init();
     }
 
     void Pass()
     {
-        trig.GetComponent<PuzzleContro2>().PuzzleSolved(0);
+        Player.PuzzleSolved(0);
     }
 
     void Fail()
     {
-        trig.GetComponent<PuzzleContro2>().PuzzleFailed(0);
+        Player.PuzzleFailed(0);
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-
             Debug.Log(rayer.RayInput());
             if (rayer.RayInput() == "Minus")
             {
@@ -97,7 +97,7 @@ public class ButtonManipulatorScript : MonoBehaviour
                 {
                     value = 0;
                 }
-                number.text = itos(value);
+                number.text = IntegerToString(value);
             }
             if (rayer.RayInput() == "Plus")
             {
@@ -106,7 +106,7 @@ public class ButtonManipulatorScript : MonoBehaviour
                 {
                     value = 99;
                 }
-                number.text = itos(value);
+                number.text = IntegerToString(value);
             }
             if (rayer.RayInput() == "Submit")
             {
@@ -138,7 +138,7 @@ public class ButtonManipulatorScript : MonoBehaviour
                 }
                 if (currentCondition == conditions.prime)
                 {
-                    if (isPrime(value))
+                    if (IsPrime(value))
                     {
                         // Success
                         Pass();
@@ -151,7 +151,7 @@ public class ButtonManipulatorScript : MonoBehaviour
                 }
                 if (currentCondition == conditions.perfectSquare)
                 {
-                    if (isPerfectSquare(value))
+                    if (IsPerfectSquare(value))
                     {
                         // Success
                         Pass();

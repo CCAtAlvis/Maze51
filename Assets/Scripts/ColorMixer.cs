@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class ColorMixer : MonoBehaviour
 {
     public GameObject trig;
+
+    public PuzzleContro2 Player;
+    public RayCastClick rayer;
+
     Dictionary<string, Color> quotes =
     new Dictionary<string, Color>();
 
@@ -18,7 +22,7 @@ public class ColorMixer : MonoBehaviour
     string[] quoteStrings = new string[12];
 
     public Text textui;
-    public void init()
+    public void Init()
     {
         coloredSpheres[0].GetComponent<Renderer>().material.color = yellow;
         coloredSpheres[1].GetComponent<Renderer>().material.color = Color.red;
@@ -56,7 +60,7 @@ public class ColorMixer : MonoBehaviour
     }
     void Start()
     {
-        init();
+        Init();
     }
 
     Color AddColor()
@@ -66,7 +70,6 @@ public class ColorMixer : MonoBehaviour
         return col;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -85,13 +88,10 @@ public class ColorMixer : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            // Submit
             if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
                 trig.GetComponent<PuzzleController>().PuzzleSolved(3);
             else
             {
-                //currSphere = 0;
-                //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 trig.GetComponent<PuzzleController>().PuzzleFailed(3);
             }
         }

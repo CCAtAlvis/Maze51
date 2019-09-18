@@ -50,15 +50,15 @@ public class PuzzleController : MonoBehaviour
             cvObject.SetActive(false);
         if (x == 1)
         {
-            P1ScriptObject.init();
+            P1ScriptObject.Init();
         }
         if (x == 2)
         {
-            P2ScriptObject.init();
+            P2ScriptObject.Init();
         }
         if (x == 3)
         {
-            P3ScriptObject.init();
+            P3ScriptObject.Init();
         }
         if (x == 4)
         {
