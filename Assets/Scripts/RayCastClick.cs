@@ -1,21 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RayCastClick : MonoBehaviour
 {
-    RaycastHit hit;
-    
-    void Update()
+    public float viewDistance = 10.0f;
+    public string RayInput()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-                
-        if (Physics.Raycast(transform.position, fwd, 10))
+        RaycastHit hit;
+        Ray frontRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * viewDistance);
+
+        if (Physics.Raycast(frontRay, out hit, viewDistance))
         {
-            if (Input.GetButtonUp("Fire1"))
+            if (hit.collider.tag == "ActionsMithil")
             {
-                
+                return hit.transform.name;
             }
         }
+        return "Love";
     }
 }

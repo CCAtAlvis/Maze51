@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ButtonManipulatorScript : MonoBehaviour
 {
     public GameObject trig;
+    public RayCastClick rayer;
     Color blue = new Color(44f / 255, 130f / 255, 201f / 255, 1);
     Color yellow = new Color(254f / 255, 241f / 255, 96f / 255, 1);
     Color red = new Color(219f / 255, 10f / 255, 91f / 255, 1);
@@ -75,100 +76,104 @@ public class ButtonManipulatorScript : MonoBehaviour
 
     void Pass()
     {
-        trig.GetComponent<PuzzleController>().PuzzleSolved(1);
+        trig.GetComponent<PuzzleContro2>().PuzzleSolved(0);
     }
 
     void Fail()
     {
-        trig.GetComponent<PuzzleController>().PuzzleFailed(1);
+        trig.GetComponent<PuzzleContro2>().PuzzleFailed(0);
     }
 
     void Update()
     {
+        if (Input.GetButton("Fire1"))
+        {
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            value--;
-            if (value < 0)
+            Debug.Log(rayer.RayInput());
+            if (rayer.RayInput() == "Minus")
             {
-                value = 0;
+                value--;
+                if (value < 0)
+                {
+                    value = 0;
+                }
+                number.text = itos(value);
             }
-            number.text = itos(value);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            value++;
-            if (value > 99)
+            if (rayer.RayInput() == "Plus")
             {
-                value = 99;
+                value++;
+                if (value > 99)
+                {
+                    value = 99;
+                }
+                number.text = itos(value);
             }
-            number.text = itos(value);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (currentCondition == conditions.odd)
+            if (rayer.RayInput() == "Submit")
             {
-                if ((value & 1) == 1)
+                if (currentCondition == conditions.odd)
                 {
-                    // Success
-                    Pass();
+                    if ((value & 1) == 1)
+                    {
+                        // Success
+                        Pass();
+                    }
+                    else
+                    {
+                        // Wrong
+                        Fail();
+                    }
                 }
-                else
+                if (currentCondition == conditions.even)
                 {
-                    // Wrong
-                    Fail();
+                    if ((value & 1) == 0)
+                    {
+                        // Success
+                        Pass();
+                    }
+                    else
+                    {
+                        // Wrong
+                        Fail();
+                    }
                 }
-            }
-            if (currentCondition == conditions.even)
-            {
-                if ((value & 1) == 0)
+                if (currentCondition == conditions.prime)
                 {
-                    // Success
-                    Pass();
+                    if (isPrime(value))
+                    {
+                        // Success
+                        Pass();
+                    }
+                    else
+                    {
+                        // Wrong
+                        Fail();
+                    }
                 }
-                else
+                if (currentCondition == conditions.perfectSquare)
                 {
-                    // Wrong
-                    Fail();
+                    if (isPerfectSquare(value))
+                    {
+                        // Success
+                        Pass();
+                    }
+                    else
+                    {
+                        // Wrong
+                        Fail();
+                    }
                 }
-            }
-            if (currentCondition == conditions.prime)
-            {
-                if (isPrime(value))
+                if (currentCondition == conditions.divisibleBy3)
                 {
-                    // Success
-                    Pass();
-                }
-                else
-                {
-                    // Wrong
-                    Fail();
-                }
-            }
-            if (currentCondition == conditions.perfectSquare)
-            {
-                if (isPerfectSquare(value))
-                {
-                    // Success
-                    Pass();
-                }
-                else
-                {
-                    // Wrong
-                    Fail();
-                }
-            }
-            if (currentCondition == conditions.divisibleBy3)
-            {
-                if (value % 3 == 0)
-                {
-                    // Success
-                    Pass();
-                }
-                else
-                {
-                    // Wrong
-                    Fail();
+                    if (value % 3 == 0)
+                    {
+                        // Success
+                        Pass();
+                    }
+                    else
+                    {
+                        // Wrong
+                        Fail();
+                    }
                 }
             }
         }

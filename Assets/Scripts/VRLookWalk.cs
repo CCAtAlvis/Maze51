@@ -17,11 +17,12 @@ public class VRLookWalk : MonoBehaviour
 
     void Update()
     {
-
         //if (cameraTransform.eulerAngles.x >= toggleAngle
         //  && cameraTransform.eulerAngles.x <= 90.0f)
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetButton("Fire1"))
+        {
             moveForward = true;
+        }
         else
             moveForward = false;
 

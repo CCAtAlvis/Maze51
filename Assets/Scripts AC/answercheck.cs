@@ -22,7 +22,7 @@ public class answercheck : MonoBehaviour {
         if (flag == 0) { 
         direction = swaper.num;
         //button.transform.localScale -= new Vector3(0, 0, 0.5f);
-        float pos = button.transform.position.x;
+        //float pos = button.transform.position.x;
             //Debug.Log(button.transform.position.x);
 
             if (direction == buttonno)
