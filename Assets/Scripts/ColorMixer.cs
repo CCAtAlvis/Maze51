@@ -72,27 +72,30 @@ public class ColorMixer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetButtonDown("Fire1"))
         {
-            // To select the color of current sphere
-            tempColor = coloredSpheres[currSphere].GetComponent<Renderer>().material.color;
-            if (gameObject.GetComponent<Renderer>().material.color == Color.white)
-                gameObject.GetComponent<Renderer>().material.color = tempColor;
-            else
-                gameObject.GetComponent<Renderer>().material.color = AddColor();
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            // Cycle spheres
-            currSphere = ++currSphere % 3;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
-                trig.GetComponent<PuzzleController>().PuzzleSolved(3);
-            else
+            if (rayer.RayInput() == "ChooseThis")
             {
-                trig.GetComponent<PuzzleController>().PuzzleFailed(3);
+                // To select the color of current sphere
+                tempColor = coloredSpheres[currSphere].GetComponent<Renderer>().material.color;
+                if (gameObject.GetComponent<Renderer>().material.color == Color.white)
+                    gameObject.GetComponent<Renderer>().material.color = tempColor;
+                else
+                    gameObject.GetComponent<Renderer>().material.color = AddColor();
+            }
+            if (rayer.RayInput() == "Next")
+            {
+                // Cycle spheres
+                currSphere = ++currSphere % 3;
+            }
+            if (rayer.RayInput() == "Submit3")
+            {
+                if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
+                    Player.PuzzleSolved(2);
+                else
+                {
+                    Player.PuzzleFailed(2);
+                }
             }
         }
     }

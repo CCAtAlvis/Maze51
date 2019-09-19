@@ -16,7 +16,7 @@ public class PuzzleContro2 : MonoBehaviour
             int ind = Array.IndexOf(triggers, enterTrig);
             transform.position = sceneSpawnPoints[ind].transform.position;
             transform.GetChild(0).GetComponent<VRLookWalk>().enabled = false;
-            scriptObjects[ind].SetActive(true);
+            //scriptObjects[ind].SetActive(true);
         }
     }
 

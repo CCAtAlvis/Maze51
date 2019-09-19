@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class StringEncoder : MonoBehaviour
 {
+
     public GameObject trig;
     public PuzzleContro2 Player;
     public RayCastClick rayer;
+    public GameObject[] Characters; // ABCD
+    public Transform[] DrawCharacterTransform;
+    private GameObject[] DecodedCharacters = new GameObject[4];
 
     private static System.Random random = new System.Random();
-    public Text strEncoded, strDecoded;
     private string encoded, decoded;
 
     Condition curr;
@@ -155,9 +158,37 @@ public class StringEncoder : MonoBehaviour
     {
         encoded = RandomString();
         decoded = RandomString();
-        strEncoded.text = encoded;
-        strDecoded.text = decoded;
+        Create3DText(encoded, 0);
+        Create3DText(decoded, 4);
         curr = CurrCondition();
+    }
+
+    void Create3DText(string str, int pos) // pos for left or right string
+    {
+        int k = 0;
+        for (int i = 0; i < 4; ++i)
+        {
+            int ind = str[i] - 'A';
+            if (k == 4) k = 0;
+            if (pos == 4)
+            {
+                if (DecodedCharacters[k] == null)
+                {
+                    Debug.Log("Yes" + ind);
+                    DecodedCharacters[k] = Instantiate(Characters[ind], DrawCharacterTransform[i + pos].position, Quaternion.Euler(0, 180, 0));
+                }
+                else
+                {
+                    Destroy(DecodedCharacters[k]);
+                    DecodedCharacters[k] = Instantiate(Characters[ind], DrawCharacterTransform[i + pos].position, Quaternion.Euler(0, 180, 0));
+                }
+                k++;
+            }
+            else
+            {
+                Instantiate(Characters[ind], DrawCharacterTransform[i].position, Quaternion.Euler(0, 180, 0));
+            }
+        }
     }
 
     void Start()
@@ -169,37 +200,39 @@ public class StringEncoder : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (CheckResult())
+            if (rayer.RayInput() == "Submit2")
             {
-                // Success
-                Player.PuzzleSolved(1);
+                if (CheckResult())
+                {
+                    // Success
+                    Player.PuzzleSolved(1);
+                }
+                else
+                {
+                    // Fail
+                    Player.PuzzleFailed(1);
+                }
             }
-            else
+            if (rayer.RayInput() == "Cycler") // To cycle current character
             {
-                // Fail
-                Player.PuzzleFailed(1);
+                StringBuilder sb = new StringBuilder(decoded);
+                if (decoded[currRow] == 'A')
+                    sb[currRow] = 'B';
+                else if (decoded[currRow] == 'B')
+                    sb[currRow] = 'C';
+                else if (decoded[currRow] == 'C')
+                    sb[currRow] = 'D';
+                else if (decoded[currRow] == 'D')
+                    sb[currRow] = 'A';
+                decoded = sb.ToString();
+                Create3DText(decoded, 4);
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.A)) // To cycle current character
-        {
-            StringBuilder sb = new StringBuilder(decoded);
-            if (decoded[currRow] == 'A')
-                sb[currRow] = 'B';
-            else if (decoded[currRow] == 'B')
-                sb[currRow] = 'C';
-            else if (decoded[currRow] == 'C')
-                sb[currRow] = 'D';
-            else if (decoded[currRow] == 'D')
-                sb[currRow] = 'A';
-            decoded = sb.ToString();
-            strDecoded.text = decoded;
-        }
-        else if (Input.GetKeyDown(KeyCode.S)) // To cycle to next row of character
-        {
-            currRow = ++currRow % 4;
+            if (rayer.RayInput() == "NextChar") // To cycle to next row of character
+            {
+                currRow = ++currRow % 4;
+            }
         }
     }
 }
