@@ -14,8 +14,6 @@ public class WallSetter : MonoBehaviour
 
     public void init()
     {
-        for (int i = 1; i < 9; ++i)
-            BricksList[i].GetComponent<cakeslice.Outline>().enabled = false;
         YourSolutionList.Clear();
         index = 0; j = 0;
     }
@@ -52,7 +50,6 @@ public class WallSetter : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            BricksList[index].GetComponent<cakeslice.Outline>().enabled = false;
             index = ++index % (BricksList.Count);
             if (YourSolutionList != null && YourSolutionList.Contains(index))
                 index = ++index % (BricksList.Count);
@@ -62,7 +59,6 @@ public class WallSetter : MonoBehaviour
                 index = ++index % (BricksList.Count);
             if (YourSolutionList != null && YourSolutionList.Contains(index))
                 index = ++index % (BricksList.Count);
-            BricksList[index].GetComponent<cakeslice.Outline>().enabled = true;
         }
     }
 }

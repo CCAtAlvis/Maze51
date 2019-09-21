@@ -27,7 +27,6 @@ public class PuzzleController : MonoBehaviour
         if (doesRequireCanvas)
             cvObject.SetActive(false);
 
-        Player.GetComponent<CubeMovement>().enabled = true;
         if (x == 2)
         {
             P3ScriptObject.enabled = true;
@@ -64,6 +63,5 @@ public class PuzzleController : MonoBehaviour
         {
             P4ScriptObject.init();
         }
-        Player.GetComponent<CubeMovement>().enabled = true;
     }
 }
