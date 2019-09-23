@@ -4,61 +4,50 @@ using UnityEngine;
 
 public class WallSetter : MonoBehaviour
 {
-    public GameObject trig;
-    public GameObject[] MiddleHoleOrientation = new GameObject[4];    // LeftTop, RigthTop, LeftBottom, RightBottom
-    private GameObject[] holeFiller = new GameObject[4]; // The 
-    public List<GameObject> BricksList = new List<GameObject>(); // The list of bricks to the right
-    private List<int> YourSolutionList = new List<int>();
-    int index = 0, j = 0;
-    private readonly List<int> ActualSolutionList = new List<int>() { 1, 3, 6, 0 };
-
-    public void init()
+    readonly List<int> TrueSolution = new List<int>() { 1, 2, 3, 4 }; // Initialize solution list
+    List<int> CurrentSolution = new List<int>();
+    public GameObject[] Bricks;
+    public GameObject[] Points;
+    public RayCastClick rayer;
+    int x = 0;
+    private void Update()
     {
-        YourSolutionList.Clear();
-        index = 0; j = 0;
-    }
-
-    void Start()
-    {
-        // The bricks are all outlined at the beginning.
-        // We disable the outline from 1 to 8
-        init();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (rayer.RayInput() == "psi")
+            {
+                CurrentSolution.Add(1);
+                rayer.RayReference().transform.position = Points[x++].transform.position;
+            }
+            if (rayer.RayInput() == "tau")
+            {
+                CurrentSolution.Add(2);
+                rayer.RayReference().transform.position = Points[x++].transform.position;
+            }
+            if (rayer.RayInput() == "pi")
+            {
+                CurrentSolution.Add(3);
+                rayer.RayReference().transform.position = Points[x++].transform.position;
+            }
+            if (rayer.RayInput() == "nu")
+            {
+                CurrentSolution.Add(4);
+                rayer.RayReference().transform.position = Points[x++].transform.position;
+            }
+            if(x == 4)
+            {
+                CheckSolution();
+            }
+        }
     }
 
     void CheckSolution()
     {
-        if (YourSolutionList.SequenceEqual(ActualSolutionList))
-            trig.GetComponent<PuzzleController>().PuzzleSolved(4);
+        if (TrueSolution.SequenceEqual(CurrentSolution))
+        {
+            Debug.Log("Right");
+        }
         else
-            trig.GetComponent<PuzzleController>().PuzzleFailed(4);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            holeFiller[j] = BricksList[index];
-            YourSolutionList.Add(index);
-
-            holeFiller[j].transform.position = MiddleHoleOrientation[j].transform.position;
-
-            if (j == 3)
-            {
-                CheckSolution();
-            }
-            ++j;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            index = ++index % (BricksList.Count);
-            if (YourSolutionList != null && YourSolutionList.Contains(index))
-                index = ++index % (BricksList.Count);
-            if (YourSolutionList != null && YourSolutionList.Contains(index))
-                index = ++index % (BricksList.Count);
-            if (YourSolutionList != null && YourSolutionList.Contains(index))
-                index = ++index % (BricksList.Count);
-            if (YourSolutionList != null && YourSolutionList.Contains(index))
-                index = ++index % (BricksList.Count);
-        }
+            Debug.Log("Wrong");
     }
 }

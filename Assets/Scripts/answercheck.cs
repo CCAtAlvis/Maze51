@@ -29,13 +29,13 @@ public class answercheck : MonoBehaviour {
             {
                 Debug.Log("Success");
                 flag = 1;
-                trig.GetComponent<PuzzleController>().PuzzleSolved(5);
+                //trig.GetComponent<PuzzleController>().PuzzleSolved(5);
             }
             else
             {
                 Debug.Log("Failed");
                 flag = 1;
-                trig.GetComponent<PuzzleController>().PuzzleFailed(5);
+                //trig.GetComponent<PuzzleController>().PuzzleFailed(5);
             }
                 
         }

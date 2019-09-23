@@ -147,12 +147,12 @@ public class Trickop : MonoBehaviour
         if (ansobj.GetComponent<TextMesh>().color == ansc[ac, bc])
         {
             Debug.Log("Success");
-            trig.GetComponent<PuzzleController>().PuzzleSolved(6);
+            //trig.GetComponent<PuzzleController>().PuzzleSolved(6);
         }
         else
         {
             Debug.Log("Failure");
-            trig.GetComponent<PuzzleController>().PuzzleFailed(6);
+            //trig.GetComponent<PuzzleController>().PuzzleFailed(6);
         }
 
 

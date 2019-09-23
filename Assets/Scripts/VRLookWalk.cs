@@ -13,6 +13,7 @@ public class VRLookWalk : MonoBehaviour
     {
         characterController = GetComponentInParent<CharacterController>();
         cameraTransform = Camera.main.transform;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
