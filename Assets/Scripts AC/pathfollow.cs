@@ -6,11 +6,11 @@ public class pathfollow : MonoBehaviour {
 
     public GameObject[] block;
 
-    public static int x=0, z=0,c=0,ch,index=0;
+    public static int c=0,ch,index=0;
 
     public static int[] xrand, zrand,answerkey; 
 
-    public int scale=1;
+    public int scale=1,x,z;
 
     //block = new GameObject[4];
 	// Use this for initialization
