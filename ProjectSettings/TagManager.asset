@@ -9,6 +9,7 @@ TagManager:
   - ActionsMithil
   - HighlightMe
   - empty pos
+  - 3Dmodel
   layers:
   - Default
   - TransparentFX

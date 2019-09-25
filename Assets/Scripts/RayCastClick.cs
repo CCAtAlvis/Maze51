@@ -3,6 +3,7 @@
 public class RayCastClick : MonoBehaviour
 {
     public float viewDistance = 10.0f;
+
     public string RayInput()
     {
         RaycastHit hit;
@@ -18,6 +19,7 @@ public class RayCastClick : MonoBehaviour
         }
         return "Love";
     }
+
     public GameObject RayReference()
     {
         RaycastHit hit;
@@ -26,7 +28,7 @@ public class RayCastClick : MonoBehaviour
 
         if (Physics.Raycast(frontRay, out hit, viewDistance))
         {
-            if (hit.collider.tag == "ActionsMithil")
+            if (hit.collider.tag == "ActionsMithil" || hit.collider.tag == "3Dmodel")
             {
                 return hit.collider.gameObject;
             }

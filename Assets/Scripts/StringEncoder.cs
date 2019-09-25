@@ -12,6 +12,11 @@ public class StringEncoder : MonoBehaviour
     public GameObject[] Characters; // ABCD
     public Transform[] DrawCharacterTransform;
     private GameObject[] DecodedCharacters = new GameObject[4];
+    private GameObject TempObj;
+    public Mesh[] MeshArray;
+
+    int currRow = 0;
+
 
     private static System.Random random = new System.Random();
     private string encoded, decoded;
@@ -157,10 +162,11 @@ public class StringEncoder : MonoBehaviour
     public void Init()
     {
         encoded = RandomString();
-        decoded = RandomString();
+        decoded = "DBBC";
         Create3DText(encoded, 0);
         Create3DText(decoded, 4);
         curr = CurrCondition();
+        PlaceSetter();
     }
 
     void Create3DText(string str, int pos) // pos for left or right string
@@ -174,7 +180,6 @@ public class StringEncoder : MonoBehaviour
             {
                 if (DecodedCharacters[k] == null)
                 {
-                    Debug.Log("Yes" + ind);
                     DecodedCharacters[k] = Instantiate(Characters[ind], DrawCharacterTransform[i + pos].position, Quaternion.Euler(0, 180, 0));
                 }
                 else
@@ -190,14 +195,17 @@ public class StringEncoder : MonoBehaviour
             }
         }
     }
+   
+    void PlaceSetter()
+    {
+        for (int i = 0; i < 4; ++i)
+            DecodedCharacters[i].GetComponent<StringEncoderBlock>().place = i;
+    }
 
     void Start()
     {
         Init();
     }
-
-    int currRow = 0;
-
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -215,25 +223,49 @@ public class StringEncoder : MonoBehaviour
                     Player.PuzzleFailed(1);
                 }
             }
-            if (rayer.RayInput() == "Cycler") // To cycle current character
+            int n;
+            TempObj = rayer.RayReference();
+            if (TempObj == null) return;
+            if (TempObj.tag == "3Dmodel")
             {
+                n = TempObj.GetComponent<StringEncoderBlock>().place;
                 StringBuilder sb = new StringBuilder(decoded);
-                if (decoded[currRow] == 'A')
-                    sb[currRow] = 'B';
-                else if (decoded[currRow] == 'B')
-                    sb[currRow] = 'C';
-                else if (decoded[currRow] == 'C')
-                    sb[currRow] = 'D';
-                else if (decoded[currRow] == 'D')
-                    sb[currRow] = 'A';
+                sb[n] = (char)(((decoded[n] - 'A') + 1) % 4 + 65);
+                Debug.Log(sb[n]);
                 decoded = sb.ToString();
-                Create3DText(decoded, 4);
+                Debug.Log(decoded);
+                DecoderCharacterMeshChanger();
+                Debug.Log("Pressed on 3dmodel");
             }
-            if (rayer.RayInput() == "NextChar") // To cycle to next row of character
-            {
-                currRow = ++currRow % 4;
-            }
+            //if (rayer.RayInput() == "Cycler") // To cycle current character
+            //{
+
+            //}
+            //if (rayer.RayInput() == "NextChar") // To cycle to next row of character
+            //{
+            //    currRow = ++currRow % 4;
+            //}
         }
     }
+    void DecoderCharacterMeshChanger()
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            int index = decoded[i] - 'A';
+            DecodedCharacters[i].GetComponent<MeshFilter>().mesh = MeshArray[index];
+        }
+    }
+    void ActualStringChanger()
+    {
+        StringBuilder sb = new StringBuilder(decoded);
+        if (decoded[currRow] == 'A')
+            sb[currRow] = 'B';
+        else if (decoded[currRow] == 'B')
+            sb[currRow] = 'C';
+        else if (decoded[currRow] == 'C')
+            sb[currRow] = 'D';
+        else if (decoded[currRow] == 'D')
+            sb[currRow] = 'A';
+        decoded = sb.ToString();
+    }
 }
-

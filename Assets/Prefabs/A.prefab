@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4267975371864740}
   - component: {fileID: 33276415594706054}
   - component: {fileID: 23144943991853382}
+  - component: {fileID: 65672394406530264}
+  - component: {fileID: 114434633221271314}
   m_Layer: 0
   m_Name: A
-  m_TagString: HighlightMe
+  m_TagString: 3Dmodel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,3 +84,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736537607684754}
   m_Mesh: {fileID: 4300000, guid: 7fb7eb8277becaf48af1b98ec45f9ccc, type: 3}
+--- !u!65 &65672394406530264
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736537607684754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.006331878, y: 0.0061135376, z: 0.0028}
+  m_Center: {x: -0.0033842796, y: 0.0030567688, z: 0}
+--- !u!114 &114434633221271314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736537607684754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b81e4b295a3a9b408c77a98083ca64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: 0
+  value: 0
