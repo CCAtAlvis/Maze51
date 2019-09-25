@@ -33,14 +33,14 @@ public class Trickop : MonoBehaviour
 
         objc = new Color[8];
 
-        objc[0] = new Color32(0, 0, 0, 255);
-        objc[1] = new Color32(255, 0, 0, 255);
-        objc[2] = new Color32(0, 255, 0, 255);
-        objc[3] = new Color32(255, 255, 0, 255);
-        objc[4] = new Color32(0, 0, 255, 255);
-        objc[5] = new Color32(255, 0, 255, 255);
-        objc[6] = new Color32(0, 255, 255, 255);
-        objc[7] = new Color32(255, 255, 255, 255);
+        objc[0] = new Color32(0, 0, 0, 255);            //black
+        objc[1] = new Color32(255, 0, 0, 255);          //red
+        objc[2] = new Color32(0, 255, 0, 255);          //green
+        objc[3] = new Color32(255, 255, 0, 255);         //yellow
+        objc[4] = new Color32(0, 0, 255, 255);          //blue
+        objc[5] = new Color32(255, 0, 255, 255);        //magenta
+        objc[6] = new Color32(0, 255, 255, 255);        //cyan
+        objc[7] = new Color32(255, 255, 255, 255);      //white
 
         num1.GetComponent<TextMesh>().text = a.ToString();
         num2.GetComponent<TextMesh>().text = b.ToString();
@@ -148,15 +148,26 @@ public class Trickop : MonoBehaviour
 
         //ansobj.GetComponent<TextMesh>().color = ansc[ac, bc];
         //ansobj.GetComponent<TextMesh>().text = ans.ToString();
+        
+
+    }
+
+    void Update()
+    {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (rayer.RayInput() == "Colorchange")
+            Debug.Log("button");
+            string s = rayer.RayInput();
+            Debug.Log(s);
+            if (s == "Colorchange")
             {
+                
+                Debug.Log("cc");
                 randomcolor = Random.Range(0, 8);
                 ans1.GetComponent<TextMesh>().color = objc[randomcolor];
                 ans2.GetComponent<TextMesh>().color = objc[randomcolor];
             }
-            else if (rayer.RayInput() == "a1")
+            else if (rayer.RayInput() == "IncA1")
             {
                 a1++;
                 if (a1 > 9)
@@ -164,7 +175,7 @@ public class Trickop : MonoBehaviour
                 ans1.GetComponent<TextMesh>().text = a1.ToString();
 
             }
-            else if (rayer.RayInput() == "a2")
+            else if (rayer.RayInput() == "IncA2")
             {
                 a2++;
                 if (a2 > 9)
@@ -174,7 +185,7 @@ public class Trickop : MonoBehaviour
             }
             else if (rayer.RayInput() == "Submit")
             {
-                if (ans1.GetComponent<TextMesh>().color == ansc[ac, bc] && (a1*10+a2)==ans )
+                if (ans1.GetComponent<TextMesh>().color == ansc[ac, bc] && (a1 * 10 + a2) == ans)
                 {
                     Debug.Log("Success");
                     Player.PuzzleSolved(1);
@@ -185,15 +196,8 @@ public class Trickop : MonoBehaviour
                     Player.PuzzleFailed(1);
                 }
             }
-
         }
-        
-
-
-
-
     }
-
 
 }
 	

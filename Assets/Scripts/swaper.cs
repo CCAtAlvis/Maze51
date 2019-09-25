@@ -53,11 +53,6 @@ public class swaper : MonoBehaviour {
                 Debug.Log("Success");
                 Player.PuzzleSolved(0);
             }
-            else
-            {
-                Debug.Log("Failed");
-                Player.PuzzleFailed(0);
-            }
             }
     }
 
