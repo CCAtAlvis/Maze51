@@ -6,7 +6,6 @@ public class PuzzleContro2 : MonoBehaviour
     public GameObject[] triggers;
     public GameObject[] failurePoints;
     public GameObject[] sceneSpawnPoints;
-    public GameObject[] scriptObjects;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +15,6 @@ public class PuzzleContro2 : MonoBehaviour
             int ind = Array.IndexOf(triggers, enterTrig);
             transform.position = sceneSpawnPoints[ind].transform.position;
             transform.GetChild(0).GetComponent<VRLookWalk>().enabled = false;
-            //scriptObjects[ind].SetActive(true);
         }
     }
 

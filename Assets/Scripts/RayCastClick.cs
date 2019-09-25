@@ -28,7 +28,7 @@ public class RayCastClick : MonoBehaviour
 
         if (Physics.Raycast(frontRay, out hit, viewDistance))
         {
-            if (hit.collider.tag == "ActionsMithil" || hit.collider.tag == "3Dmodel")
+            if (hit.collider.tag == "ActionsMithil" || hit.collider.tag == "3Dmodel" || hit.collider.tag == "ColoredSphere")
             {
                 return hit.collider.gameObject;
             }

@@ -74,20 +74,6 @@ public class ColorMixer : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (rayer.RayInput() == "ChooseThis")
-            {
-                // To select the color of current sphere
-                tempColor = coloredSpheres[currSphere].GetComponent<Renderer>().material.color;
-                if (gameObject.GetComponent<Renderer>().material.color == Color.white)
-                    gameObject.GetComponent<Renderer>().material.color = tempColor;
-                else
-                    gameObject.GetComponent<Renderer>().material.color = AddColor();
-            }
-            if (rayer.RayInput() == "Next")
-            {
-                // Cycle spheres
-                currSphere = ++currSphere % 3;
-            }
             if (rayer.RayInput() == "Submit3")
             {
                 if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
@@ -96,6 +82,18 @@ public class ColorMixer : MonoBehaviour
                 {
                     Player.PuzzleFailed(2);
                 }
+            }
+            GameObject temp = rayer.RayReference();
+            if (temp == null) return;
+            if (temp.tag == "ColoredSphere")
+            {
+                Debug.Log("TOuching");
+                // To select the color of current sphere
+                tempColor = temp.GetComponent<Renderer>().material.color;
+                if (gameObject.GetComponent<Renderer>().material.color == Color.white)
+                    gameObject.GetComponent<Renderer>().material.color = tempColor;
+                else
+                    gameObject.GetComponent<Renderer>().material.color = AddColor();
             }
         }
     }
