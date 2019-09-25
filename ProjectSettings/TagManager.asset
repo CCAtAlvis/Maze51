@@ -8,6 +8,7 @@ TagManager:
   - camObj
   - ActionsMithil
   - HighlightMe
+  - empty pos
   layers:
   - Default
   - TransparentFX
