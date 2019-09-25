@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.UI;
 
 public class Trickop : MonoBehaviour
 {
 
-    public GameObject num1, num2, operationobj, ansobj;
+    public GameObject num1, num2, operationobj, ans1, ans2;
+    public PuzzleContro2 Player;
+    public RayCastClick rayer;
 
     public GameObject trig;
 
-    public static int a, b, co, ans;
+    public static int a, b, co, ans,randomcolor,a1=0,a2=0;
 
     public static string[] op;
 
@@ -29,14 +33,14 @@ public class Trickop : MonoBehaviour
 
         objc = new Color[8];
 
-        objc[0] = new Color32(0, 0, 0, 255);
-        objc[1] = new Color32(255, 0, 0, 255);
-        objc[2] = new Color32(0, 255, 0, 255);
-        objc[3] = new Color32(255, 255, 0, 255);
-        objc[4] = new Color32(0, 0, 255, 255);
-        objc[5] = new Color32(255, 0, 255, 255);
-        objc[6] = new Color32(0, 255, 255, 255);
-        objc[7] = new Color32(255, 255, 255, 255);
+        objc[0] = new Color32(0, 0, 0, 255);            //black
+        objc[1] = new Color32(255, 0, 0, 255);          //red
+        objc[2] = new Color32(0, 255, 0, 255);          //green
+        objc[3] = new Color32(255, 255, 0, 255);         //yellow
+        objc[4] = new Color32(0, 0, 255, 255);          //blue
+        objc[5] = new Color32(255, 0, 255, 255);        //magenta
+        objc[6] = new Color32(0, 255, 255, 255);        //cyan
+        objc[7] = new Color32(255, 255, 255, 255);      //white
 
         num1.GetComponent<TextMesh>().text = a.ToString();
         num2.GetComponent<TextMesh>().text = b.ToString();
@@ -141,25 +145,59 @@ public class Trickop : MonoBehaviour
                 break;
         }
 
-        ansobj.GetComponent<TextMesh>().color = ansc[ac, bc];
-        ansobj.GetComponent<TextMesh>().text = ans.ToString();
 
-        if (ansobj.GetComponent<TextMesh>().color == ansc[ac, bc])
-        {
-            Debug.Log("Success");
-            //trig.GetComponent<PuzzleController>().PuzzleSolved(6);
-        }
-        else
-        {
-            Debug.Log("Failure");
-            //trig.GetComponent<PuzzleController>().PuzzleFailed(6);
-        }
-
-
-
+        //ansobj.GetComponent<TextMesh>().color = ansc[ac, bc];
+        //ansobj.GetComponent<TextMesh>().text = ans.ToString();
+        
 
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("button");
+            string s = rayer.RayInput();
+            Debug.Log(s);
+            if (s == "Colorchange")
+            {
+                
+                Debug.Log("cc");
+                randomcolor = Random.Range(0, 8);
+                ans1.GetComponent<TextMesh>().color = objc[randomcolor];
+                ans2.GetComponent<TextMesh>().color = objc[randomcolor];
+            }
+            else if (rayer.RayInput() == "IncA1")
+            {
+                a1++;
+                if (a1 > 9)
+                    a1 = 0;
+                ans1.GetComponent<TextMesh>().text = a1.ToString();
+
+            }
+            else if (rayer.RayInput() == "IncA2")
+            {
+                a2++;
+                if (a2 > 9)
+                    a2 = 0;
+                ans2.GetComponent<TextMesh>().text = a2.ToString();
+
+            }
+            else if (rayer.RayInput() == "Submit")
+            {
+                if (ans1.GetComponent<TextMesh>().color == ansc[ac, bc] && (a1 * 10 + a2) == ans)
+                {
+                    Debug.Log("Success");
+                    Player.PuzzleSolved(1);
+                }
+                else
+                {
+                    Debug.Log("Failure");
+                    Player.PuzzleFailed(1);
+                }
+            }
+        }
+    }
 
 }
 	

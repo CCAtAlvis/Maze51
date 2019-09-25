@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pathfollow : MonoBehaviour {
+public class pathfollow : MonoBehaviour
+{
 
     public GameObject[] block;
 
-    public static int x=0, z=0,c=0,ch,index=0;
+    public static int c = 0, ch, index = 0;
+    public RayCastClick rayer;
+    public PuzzleContro2 Player;
 
-    public static int[] xrand, zrand,answerkey; 
+    public static int[] xrand, zrand, answerkey;
 
-    public int scale=1;
+    public int scale = 1, x, z, temp;
 
     //block = new GameObject[4];
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         //block = new GameObject[4];
         xrand = new int[4];
@@ -23,10 +27,10 @@ public class pathfollow : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            xrand[i] = Random.Range(x, x+2);
-            zrand[i] = Random.Range(z, z+2);
+            xrand[i] = Random.Range(0, 2);
+            zrand[i] = Random.Range(0, 2);
 
-            block[i].transform.position = new Vector3(xrand[i]*scale, 0, zrand[i]*scale);
+            block[i].transform.position = new Vector3(x + xrand[i] * scale, 0, z + zrand[i] * scale);
 
             switch (i)
             {
@@ -61,28 +65,42 @@ public class pathfollow : MonoBehaviour {
         else
             ch = 4;
 
-        switch(ch)
+        switch (ch)
         {
             case 0:
-                answerkey =new int[]{ 0,1,2,3};
+                answerkey = new int[] { 0, 1, 2, 3 };
                 break;
             case 1:
-                answerkey =new int[]{1,3,2,0};
+                answerkey = new int[] { 1, 3, 2, 0 };
                 break;
             case 2:
-                answerkey =new int[]{0,2,3,1};
+                answerkey = new int[] { 0, 2, 3, 1 };
                 break;
             case 3:
-                answerkey =new int[]{0,1,3,2};
+                answerkey = new int[] { 0, 1, 3, 2 };
                 break;
             default:
-                answerkey =new int []{ 0,3,2,4};
+                answerkey = new int[] { 0, 3, 2, 4 };
                 break;
         }
         Debug.Log(ch);
-	}
+        temp = 0;
+    }
 
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject == block[answerkey[temp]])
+        {
+            temp++;
+            if (temp > 4)
+                Player.PuzzleSolved(2);
+        }
+        //else if(collision.collider.gameObject.name==)
+        else if (collision.collider.gameObject == block[0] || collision.collider.gameObject == block[1] || collision.collider.gameObject == block[2] || collision.collider.gameObject == block[3])
+            Player.PuzzleFailed(2);
+
+    }
+
 
 
 }
