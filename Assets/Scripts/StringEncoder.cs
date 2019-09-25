@@ -195,7 +195,7 @@ public class StringEncoder : MonoBehaviour
             }
         }
     }
-   
+
     void PlaceSetter()
     {
         for (int i = 0; i < 4; ++i)
@@ -214,12 +214,10 @@ public class StringEncoder : MonoBehaviour
             {
                 if (CheckResult())
                 {
-                    // Success
                     Player.PuzzleSolved(1);
                 }
                 else
                 {
-                    // Fail
                     Player.PuzzleFailed(1);
                 }
             }
@@ -231,20 +229,9 @@ public class StringEncoder : MonoBehaviour
                 n = TempObj.GetComponent<StringEncoderBlock>().place;
                 StringBuilder sb = new StringBuilder(decoded);
                 sb[n] = (char)(((decoded[n] - 'A') + 1) % 4 + 65);
-                Debug.Log(sb[n]);
                 decoded = sb.ToString();
-                Debug.Log(decoded);
                 DecoderCharacterMeshChanger();
-                Debug.Log("Pressed on 3dmodel");
             }
-            //if (rayer.RayInput() == "Cycler") // To cycle current character
-            //{
-
-            //}
-            //if (rayer.RayInput() == "NextChar") // To cycle to next row of character
-            //{
-            //    currRow = ++currRow % 4;
-            //}
         }
     }
     void DecoderCharacterMeshChanger()

@@ -8,6 +8,7 @@ public class WallSetter : MonoBehaviour
     List<int> CurrentSolution = new List<int>();
     public GameObject[] Bricks;
     public GameObject[] Points;
+    public PuzzleContro2 Player;
     public RayCastClick rayer;
     int x = 0;
     private void Update()
@@ -34,7 +35,7 @@ public class WallSetter : MonoBehaviour
                 CurrentSolution.Add(4);
                 rayer.RayReference().transform.position = Points[x++].transform.position;
             }
-            if(x == 4)
+            if (x == 4)
             {
                 CheckSolution();
             }
@@ -45,9 +46,9 @@ public class WallSetter : MonoBehaviour
     {
         if (TrueSolution.SequenceEqual(CurrentSolution))
         {
-            Debug.Log("Right");
+            Player.PuzzleSolved(3);
         }
         else
-            Debug.Log("Wrong");
+            Player.PuzzleFailed(3);
     }
 }
