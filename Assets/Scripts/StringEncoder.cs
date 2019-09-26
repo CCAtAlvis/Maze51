@@ -17,7 +17,6 @@ public class StringEncoder : MonoBehaviour
 
     int currRow = 0;
 
-
     private static System.Random random = new System.Random();
     private string encoded, decoded;
 

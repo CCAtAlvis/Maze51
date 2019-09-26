@@ -56,6 +56,7 @@ public class ColorMixer : MonoBehaviour
         str = quoteStrings[Random.Range(0, quoteStrings.Length)];
 
         textui.text = str;
+        textui.color = quotes[str];
     }
     void Start()
     {
