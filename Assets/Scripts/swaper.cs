@@ -53,6 +53,8 @@ public class swaper : MonoBehaviour {
                 Debug.Log("Success");
                 Player.PuzzleSolved(0);
             }
+            else if (rayer.RayInput() == "YButton" || rayer.RayInput() == "RButton" || rayer.RayInput() == "GButton" )
+                Player.PuzzleFailed(0);
             }
     }
 

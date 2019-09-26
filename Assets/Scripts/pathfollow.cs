@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+//using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +8,13 @@ public class pathfollow : MonoBehaviour
 
     public GameObject[] block;
 
-    public static int c = 0, ch, index = 0;
+    public static int c = 0, ch, index = 0,temp;
     public RayCastClick rayer;
     public PuzzleContro2 Player;
 
     public static int[] xrand, zrand, answerkey;
 
-    public int scale = 1, x, z, temp;
+    public int scale = 1, x, z;
 
     //block = new GameObject[4];
     // Use this for initialization
@@ -24,13 +25,13 @@ public class pathfollow : MonoBehaviour
         xrand = new int[4];
         zrand = new int[4];
 
-
+        
         for (int i = 0; i < 4; i++)
         {
-            xrand[i] = Random.Range(0, 2);
-            zrand[i] = Random.Range(0, 2);
+            xrand[i] = Random.Range(x, x+2);
+            zrand[i] = Random.Range(z, z+2);
 
-            block[i].transform.position = new Vector3(x + xrand[i] * scale, 0, z + zrand[i] * scale);
+            block[i].transform.position = new Vector3(xrand[i] * scale, 0, zrand[i] * scale);
 
             switch (i)
             {
@@ -80,26 +81,32 @@ public class pathfollow : MonoBehaviour
                 answerkey = new int[] { 0, 1, 3, 2 };
                 break;
             default:
-                answerkey = new int[] { 0, 3, 2, 4 };
+                answerkey = new int[] { 0, 3, 2, 1 };
                 break;
         }
         Debug.Log(ch);
         temp = 0;
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject == block[answerkey[temp]])
+        Debug.Log(collision.gameObject.name );
+        if (collision.gameObject == block[answerkey[temp]])
         {
             temp++;
+            Debug.Log("yess");
+            block[answerkey[temp]].transform.localScale -= new Vector3(0, 0.1f, 0);
             if (temp > 4)
                 Player.PuzzleSolved(2);
         }
         //else if(collision.collider.gameObject.name==)
-        else if (collision.collider.gameObject == block[0] || collision.collider.gameObject == block[1] || collision.collider.gameObject == block[2] || collision.collider.gameObject == block[3])
+        else if (collision.gameObject == block[0] || collision.gameObject == block[1] || collision.gameObject == block[2] || collision.gameObject == block[3])
             Player.PuzzleFailed(2);
 
-    }
+    }*/
+
+    
+
 
 
 

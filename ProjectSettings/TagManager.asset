@@ -9,6 +9,7 @@ TagManager:
   - ActionsMithil
   - HighlightMe
   - empty pos
+  - tiles
   layers:
   - Default
   - TransparentFX
