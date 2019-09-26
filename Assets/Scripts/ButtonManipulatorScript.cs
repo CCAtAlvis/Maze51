@@ -89,7 +89,6 @@ public class ButtonManipulatorScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log(rayer.RayInput());
             if (rayer.RayInput() == "Minus")
             {
                 value--;
