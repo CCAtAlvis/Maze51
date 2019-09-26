@@ -31,7 +31,7 @@ public class pathfollow : MonoBehaviour
             xrand[i] = Random.Range(x, x+2);
             zrand[i] = Random.Range(z, z+2);
 
-            block[i].transform.position = new Vector3(xrand[i] * scale, 0, zrand[i] * scale);
+            block[i].transform.position = new Vector3(xrand[i] * scale, 0.2f, zrand[i] * scale);
 
             switch (i)
             {

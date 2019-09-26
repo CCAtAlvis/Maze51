@@ -10,8 +10,7 @@ public class Trickop : MonoBehaviour
     public GameObject num1, num2, operationobj, ans1, ans2;
     public PuzzleContro2 Player;
     public RayCastClick rayer;
-
-    public GameObject trig;
+    
 
     public static int a, b, co, ans,randomcolor,a1=0,a2=0;
 
@@ -156,9 +155,9 @@ public class Trickop : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("button");
+            //Debug.Log("button");
             string s = rayer.RayInput();
-            Debug.Log(s);
+            //Debug.Log(s);
             if (s == "Colorchange")
             {
                 

@@ -11,6 +11,7 @@ public class WallSetter : MonoBehaviour
     public PuzzleContro2 Player;
     public RayCastClick rayer;
     int x = 0;
+    bool EnteredFunction = false;
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -37,6 +38,7 @@ public class WallSetter : MonoBehaviour
             }
             if (x == 4)
             {
+                if(!EnteredFunction)
                 CheckSolution();
             }
         }
@@ -44,6 +46,7 @@ public class WallSetter : MonoBehaviour
 
     void CheckSolution()
     {
+        EnteredFunction = true;
         if (TrueSolution.SequenceEqual(CurrentSolution))
         {
             Player.PuzzleSolved(3);

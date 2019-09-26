@@ -1560,7 +1560,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 92376383a94ea0240bb39d0731f4e22a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1785,6 +1785,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 56d21a460e7c7984eb9d4f8619508760, type: 2}
+    - target: {fileID: 100000, guid: 4b2c4bafa39e5694a9079b3c89f15f02, type: 3}
+      propertyPath: m_Name
+      value: HexMap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b2c4bafa39e5694a9079b3c89f15f02, type: 3}
   m_IsPrefabParent: 0
@@ -2012,7 +2016,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1436414495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -108.3, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2223,7 +2227,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e0fe3f048467b95418c62728e744428a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2307,7 +2311,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e0fe3f048467b95418c62728e744428a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2913,9 +2917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6d1e5794390db4f93f715f82bf6c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: {fileID: 2100000, guid: 23bfe6947b03efa4a80eae918de3f359, type: 2}
-  middle: {fileID: 2100000, guid: 348462894e7b60b40bdf91a9a6b0260d, type: 2}
-  right: {fileID: 2100000, guid: 00e5742c7572906488495f7307a7f184, type: 2}
+  left: {fileID: 2100000, guid: b5df1f32a7f345542a7244c6183298a4, type: 2}
+  middle: {fileID: 2100000, guid: 6f9ce288eb3cb8141925fe324552ccac, type: 2}
+  right: {fileID: 2100000, guid: 0c13e266285da7246a9d1943b4e2e282, type: 2}
   rayer: {fileID: 1735266148}
   Player: {fileID: 1447510790}
   Object: {fileID: 1979399907}
@@ -2933,7 +2937,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 348462894e7b60b40bdf91a9a6b0260d, type: 2}
+  - {fileID: 2100000, guid: 6f9ce288eb3cb8141925fe324552ccac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

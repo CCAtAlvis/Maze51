@@ -40,17 +40,14 @@ public class swaper : MonoBehaviour {
         {
             if (rayer.RayInput() == "RButton" && num == 0)
             {
-                Debug.Log("Success");
                 Player.PuzzleSolved(0);
             }
             else if (rayer.RayInput() == "GButton" && num == 1)
             {
-                Debug.Log("Success");
                 Player.PuzzleSolved(0);
             }
             else if (rayer.RayInput() == "YButton" && num == 2)
             {
-                Debug.Log("Success");
                 Player.PuzzleSolved(0);
             }
             else if (rayer.RayInput() == "YButton" || rayer.RayInput() == "RButton" || rayer.RayInput() == "GButton" )
