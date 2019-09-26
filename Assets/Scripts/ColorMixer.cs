@@ -13,7 +13,6 @@ public class ColorMixer : MonoBehaviour
     new Dictionary<string, Color>();
 
     public GameObject[] coloredSpheres;
-    int currSphere = 0;
     Color resultColor;
     Color tempColor;
     Color yellow = new Color(1, 1, 0, 1);
@@ -87,7 +86,6 @@ public class ColorMixer : MonoBehaviour
             if (temp == null) return;
             if (temp.tag == "ColoredSphere")
             {
-                Debug.Log("TOuching");
                 // To select the color of current sphere
                 tempColor = temp.GetComponent<Renderer>().material.color;
                 if (gameObject.GetComponent<Renderer>().material.color == Color.white)
