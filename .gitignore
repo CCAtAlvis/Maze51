@@ -58,20 +58,12 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties4
 
-*.fbx
-*.3ds
-*.blend
-*.obj
 *.mp3
 *.ogg
 *.wav
 *.png
 *.jpg
 
-*.fbx.meta
-*.3ds.meta
-*.blend.meta
-*.obj.meta
 *.mp3.meta
 *.ogg.meta
 *.wav.meta
