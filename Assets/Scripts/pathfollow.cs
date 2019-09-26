@@ -56,15 +56,15 @@ public class pathfollow : MonoBehaviour
 
 
         if (zrand[0] == zrand[1] && zrand[2] == zrand[3] && xrand[0] == xrand[2] && xrand[1] == xrand[3])
-            ch = 0;
+            ch = 0;     //square
         else if ((zrand[0] == zrand[1] && xrand[0] == xrand[2]) || (zrand[0] == zrand[1] && xrand[1] == xrand[3]) || (zrand[2] == zrand[3] && xrand[2] == xrand[0]) || (zrand[2] == zrand[3] && xrand[1] == xrand[3]))
-            ch = 1;
+            ch = 1;     //right angle triangle
         else if ((zrand[0] == zrand[1] && zrand[2] == zrand[3]) || (xrand[0] == xrand[2] && xrand[1] == xrand[3]))
-            ch = 2;
+            ch = 2;     //two parallel line
         else if (zrand[0] == zrand[1] || zrand[2] == zrand[3] || xrand[0] == xrand[2] || xrand[1] == xrand[3])
-            ch = 3;
+            ch = 3;     //line
         else
-            ch = 4;
+            ch = 4;     //nothing
 
         switch (ch)
         {
