@@ -83,6 +83,7 @@ public class ButtonManipulatorScript : MonoBehaviour
     void Fail()
     {
         Player.PuzzleFailed(0);
+        Init();
     }
 
     void Update()

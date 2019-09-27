@@ -77,10 +77,13 @@ public class ColorMixer : MonoBehaviour
             if (rayer.RayInput() == "Submit3")
             {
                 if (quotes[str] == gameObject.GetComponent<Renderer>().material.color)
+                {
                     Player.PuzzleSolved(2);
+                }
                 else
                 {
                     Player.PuzzleFailed(2);
+                    Init();
                 }
             }
             GameObject temp = rayer.RayReference();

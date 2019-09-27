@@ -8,10 +8,23 @@ public class WallSetter : MonoBehaviour
     List<int> CurrentSolution = new List<int>();
     public GameObject[] Bricks;
     public GameObject[] Points;
+    public GameObject[] PlaceHolderPoints; // Initial ones
     public PuzzleContro2 Player;
     public RayCastClick rayer;
     int x = 0;
     bool EnteredFunction = false;
+
+    void Init()
+    {
+        if (CurrentSolution != null)
+            CurrentSolution.Clear();
+        for (int i = 0; i < 4; ++i)
+        {
+            Bricks[i].transform.position = PlaceHolderPoints[i].transform.position;
+        }
+        x = 0;
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -38,20 +51,23 @@ public class WallSetter : MonoBehaviour
             }
             if (x == 4)
             {
-                if(!EnteredFunction)
-                CheckSolution();
+                if (!EnteredFunction)
+                    CheckSolution();
             }
         }
     }
 
     void CheckSolution()
     {
-        EnteredFunction = true;
         if (TrueSolution.SequenceEqual(CurrentSolution))
         {
+            EnteredFunction = true;
             Player.PuzzleSolved(3);
         }
         else
+        {
             Player.PuzzleFailed(3);
+            Init();
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StringEncoder : MonoBehaviour
 {
@@ -14,8 +13,6 @@ public class StringEncoder : MonoBehaviour
     private GameObject[] DecodedCharacters = new GameObject[4];
     private GameObject TempObj;
     public Mesh[] MeshArray;
-
-    int currRow = 0;
 
     private static System.Random random = new System.Random();
     private string encoded, decoded;
@@ -218,6 +215,7 @@ public class StringEncoder : MonoBehaviour
                 else
                 {
                     Player.PuzzleFailed(1);
+                    //Init();
                 }
             }
             int n;
@@ -240,18 +238,5 @@ public class StringEncoder : MonoBehaviour
             int index = decoded[i] - 'A';
             DecodedCharacters[i].GetComponent<MeshFilter>().mesh = MeshArray[index];
         }
-    }
-    void ActualStringChanger()
-    {
-        StringBuilder sb = new StringBuilder(decoded);
-        if (decoded[currRow] == 'A')
-            sb[currRow] = 'B';
-        else if (decoded[currRow] == 'B')
-            sb[currRow] = 'C';
-        else if (decoded[currRow] == 'C')
-            sb[currRow] = 'D';
-        else if (decoded[currRow] == 'D')
-            sb[currRow] = 'A';
-        decoded = sb.ToString();
     }
 }
