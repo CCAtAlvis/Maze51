@@ -24,5 +24,15 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/HexMaze.unity
+    path: Assets/Scenes/Hex1Maze.unity
+    guid: f93e3a974c9c057428b44980f9baecfc
+  - enabled: 1
+    path: Assets/Scenes/Hex2Maze.unity
+    guid: 3ab70087f174da744bf123c4a4128f3a
+  - enabled: 1
+    path: Assets/Scenes/Hex3Maze.unity
     guid: af9f2a72fc61081439f6700d6f1c8b8c
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: ff140b54225f9b74ebba7055129e731e
+  m_configObjects: {}

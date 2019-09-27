@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tilepress : MonoBehaviour {
+public class tilepress : MonoBehaviour
+{
 
     public GameObject tile;
-    public int number,f=0;
+    public int number, f = 0;
 
     public PuzzleContro2 Player;
 
@@ -34,17 +35,17 @@ public class tilepress : MonoBehaviour {
     void OnTriggerEnter(Collider collider)
     {
         Debug.Log(collider.gameObject.name);
-        if (pathfollow.answerkey[pathfollow.temp] == number && collider.gameObject.name != "TP" && f==0)
+        if (pathfollow.answerkey[pathfollow.temp] == number && collider.gameObject.name != "TP" && f == 0)
         {
             pathfollow.temp++;
             f = 1;
-            Debug.Log("yess"+ number);
+            Debug.Log("yess" + number);
             tile.transform.localScale -= new Vector3(0, 0.1f, 0);
             if (pathfollow.temp >= 4)
                 Player.PuzzleSolved(2);
         }
         //else if(collision.collider.gameObject.name==)
-        else if ((number == 0 || number == 1 || number == 2 || number == 3) && collider.gameObject.name != "Puzzle3" && f==0)
+        else if ((number == 0 || number == 1 || number == 2 || number == 3) && collider.gameObject.name != "Puzzle3" && f == 0)
         {
             //Debug.Log(pathfollow.answerkey[pathfollow.temp]+""+number);
             Player.PuzzleFailed(2);

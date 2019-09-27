@@ -113,7 +113,7 @@ public class Trickop : MonoBehaviour
         op = new string[4];
 
         op[0] = "#";   //greater number sqaure - other number
-        op[1] = "&";    //logical and operation and its square
+        op[1] = "&";    //output the same numbers as above
         op[2] = "$";    //combine numbers and reverse
         op[3] = "@";    //(hcf)^2
 
@@ -126,7 +126,7 @@ public class Trickop : MonoBehaviour
                     ans = b * b - a;
                 break;
             case 1:
-                ans = a & b;
+                ans = a*10+b;
                 ans *= ans;
                 break;
             case 2:

@@ -12,6 +12,8 @@ TagManager:
   - tiles
   - 3Dmodel
   - ColoredSphere
+  - WhisperTrigger
+  - JumpScareTrigger
   layers:
   - Default
   - TransparentFX

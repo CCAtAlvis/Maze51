@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class ColorMixer : MonoBehaviour
 {
-    public GameObject trig;
-
     public PuzzleContro2 Player;
     public RayCastClick rayer;
 
