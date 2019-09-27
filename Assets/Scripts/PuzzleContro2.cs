@@ -17,6 +17,7 @@ public class PuzzleContro2 : MonoBehaviour
             transform.position = sceneSpawnPoints[ind].transform.position;
             if (ind != 2)
                 transform.GetChild(0).GetComponent<VRLookWalk>().enabled = false;
+
             temp = enterTrig.transform;
         }
     }
@@ -26,6 +27,7 @@ public class PuzzleContro2 : MonoBehaviour
         enterTrig.GetComponent<Renderer>().material.color = Color.green;
         enterTrig.GetComponent<BoxCollider>().enabled = false;
         transform.position = temp.position;
+        transform.rotation = temp.rotation;
 
         transform.GetChild(0).GetComponent<VRLookWalk>().enabled = true;
     }
