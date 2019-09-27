@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fa26171020f4c4887810f7e0975ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trig: {fileID: 0}
   Player: {fileID: 1899471410}
   rayer: {fileID: 1319004487}
   coloredSpheres:
@@ -7059,17 +7058,17 @@ PrefabInstance:
     - target: {fileID: 264120936043387720, guid: 9a2051aa5afecf0409a21301d659128b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 264120936043387720, guid: 9a2051aa5afecf0409a21301d659128b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.3
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 264120936043387720, guid: 9a2051aa5afecf0409a21301d659128b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.91
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 264120936043387720, guid: 9a2051aa5afecf0409a21301d659128b,
         type: 3}

@@ -25,6 +25,17 @@ public class ColorMixer : MonoBehaviour
         coloredSpheres[1].GetComponent<Renderer>().material.color = Color.red;
         coloredSpheres[2].GetComponent<Renderer>().material.color = Color.blue;
 
+
+
+        str = quoteStrings[Random.Range(0, quoteStrings.Length)];
+
+        gameObject.GetComponent<Renderer>().material.color = Color.white;
+
+        textui.text = str;
+        textui.color = quotes[str];
+    }
+    void Start()
+    {
         quoteStrings[0] = "Yellow";
         quoteStrings[1] = "Yellow2";
         quoteStrings[2] = "Red";
@@ -37,7 +48,6 @@ public class ColorMixer : MonoBehaviour
         quoteStrings[9] = "Purple2";
         quoteStrings[10] = "Gray";
         quoteStrings[11] = "Gray2";
-
         quotes.Add(quoteStrings[0], yellow);
         quotes.Add(quoteStrings[1], yellow);
         quotes.Add(quoteStrings[2], Color.red);
@@ -50,15 +60,11 @@ public class ColorMixer : MonoBehaviour
         quotes.Add(quoteStrings[9], Color.Lerp(Color.blue, Color.red, 0.5f));
         quotes.Add(quoteStrings[10], Color.Lerp(Color.blue, yellow, 0.5f));
         quotes.Add(quoteStrings[11], Color.Lerp(Color.blue, yellow, 0.5f));
-
-        str = quoteStrings[Random.Range(0, quoteStrings.Length)];
-
-        textui.text = str;
-        textui.color = quotes[str];
-    }
-    void Start()
-    {
         Init();
+
+
+
+
     }
 
     Color AddColor()

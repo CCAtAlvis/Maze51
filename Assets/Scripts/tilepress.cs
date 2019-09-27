@@ -45,7 +45,7 @@ public class tilepress : MonoBehaviour
                 Player.PuzzleSolved(2);
         }
         //else if(collision.collider.gameObject.name==)
-        else if ((number == 0 || number == 1 || number == 2 || number == 3) && collider.gameObject.name != "Puzzle3" && f == 0)
+        else if ((number == 0 || number == 1 || number == 2 || number == 3) && collider.gameObject.name != "TP" && f == 0)
         {
             //Debug.Log(pathfollow.answerkey[pathfollow.temp]+""+number);
             Player.PuzzleFailed(2);
